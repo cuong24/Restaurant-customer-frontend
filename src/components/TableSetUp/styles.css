@@ -1,0 +1,109 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  h1{
+    font-size: 20px !important;
+    color: black;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  #floorPlan {
+    width: 60%;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px 10px;
+    grid-template-areas:
+      "tableOf4_1 tableOf4_1 tableOf6_1 tableOf2_1 tableOf4_4 tableOf4_4"
+      "tableOf4_1 tableOf4_1 tableOf6_1 tableOf2_1 tableOf4_4 tableOf4_4"
+      "tableOf4_1 tableOf4_1 tableOf6_1 tableOf2_2 tableOf4_4 tableOf4_4"
+      "tableOf4_1 tableOf4_1 tableOf6_1 tableOf2_2 tableOf4_4 tableOf4_4"
+      "tableOf4_2 tableOf4_2 tableOf6_1 tableOf2_3 tableOf4_5 tableOf4_5"
+      "tableOf4_2 tableOf4_2 tableOf6_1 tableOf2_3 tableOf4_5 tableOf4_5"
+      "tableOf4_2 tableOf4_2 tableOf6_2 tableOf2_4 tableOf4_5 tableOf4_5"
+      "tableOf4_2 tableOf4_2 tableOf6_2 tableOf2_4 tableOf4_5 tableOf4_5"
+      "tableOf4_3 tableOf4_3 tableOf6_2 tableOf2_5 tableOf4_6 tableOf4_6"
+      "tableOf4_3 tableOf4_3 tableOf6_2 tableOf2_5 tableOf4_6 tableOf4_6"
+      "tableOf4_3 tableOf4_3 tableOf6_2 tableOf2_6 tableOf4_6 tableOf4_6"
+      "tableOf4_3 tableOf4_3 tableOf6_2 tableOf2_6 tableOf4_6 tableOf4_6";
+  }
+
+  #tableOf4_1{
+    background-color: #3e7086;
+    grid-area: tableOf4_1;
+  }
+
+  #tableOf4_2 {
+    background-color: #3e7086;
+    grid-area: tableOf4_2;
+  }
+
+  #tableOf4_3 {
+    background-color: #3e7086;
+    grid-area: tableOf4_3;
+  }
+
+  #tableOf4_4 {
+    background-color: #3e7086;
+    grid-area: tableOf4_4;
+  }
+
+  #tableOf4_5 {
+    background-color: #3e7086;
+    grid-area: tableOf4_5;
+  }
+
+  #tableOf4_6 {
+    background-color: #3e7086;
+    grid-area: tableOf4_6;
+  }
+  
+  #tableOf6_1 {
+    background-color: #c4ac87;
+    grid-area: tableOf6_1;
+  }
+
+  #tableOf6_2 {
+    background-color: #c4ac87;
+    grid-area: tableOf6_2;
+  }
+
+  #tableOf2_1 {
+    background-color: #76863e;
+    grid-area: tableOf2_1; 
+  }
+
+  #tableOf2_2 {
+    background-color: #76863e;
+    grid-area: tableOf2_2;
+  }
+
+  #tableOf2_3 {
+    background-color: #76863e;
+    grid-area: tableOf2_3; 
+  }
+
+  #tableOf2_4 {
+    background-color: #76863e;
+    grid-area: tableOf2_4;
+  }
+
+  #tableOf2_5 {
+    background-color: #76863e;
+    grid-area: tableOf2_5;
+  }
+
+  #tableOf2_6 {
+    background-color: #76863e;
+    grid-area: tableOf2_6;
+  }
+
+  .reserved{
+    background-color: black;
+  }
