@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 export default function Navsbar() {
     return (
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand >Chuot Pikachu</Navbar.Brand>
+            <Navbar.Brand >Restaurant</Navbar.Brand>
         </Navbar>
     );
 }
