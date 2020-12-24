@@ -9,11 +9,11 @@ import Navsbar from '../NavsBar/NavsBar';
 function App() {
   return (
     <div className="App" style={{ width: 'fit-content', margin:'auto'}}>
-      <Navsbar></Navsbar>
-      <Menu></Menu>
-      <TableSetUp></TableSetUp>
-      <AboutUs></AboutUs>
-      <Contact></Contact>
+      <Navsbar/>
+      <Menu/>
+      <TableSetUp/>
+      <AboutUs/>
+      <Contact/>
     </div>
   );
 }
