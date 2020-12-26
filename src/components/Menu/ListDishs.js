@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import FoodImage from '../../images/logo192.png';
 import { CardDeck, Pagination } from "react-bootstrap";
+import Dish from './Dish';
+const getDishesEndPoint = 'http://localhost:8080/students/'
 
 export default function ListDisk(props) {
     const [dishes, setDishes] = useState([]);
@@ -28,40 +30,20 @@ export default function ListDisk(props) {
         setPageLimit(true);
     }
 
+    const loadDishes = () =>{
+        fetch(getDishesEndPoint)
+        .then(response => response.json())
+        .then(data => {
+            setDishes(data)
+        });
+    }
 
     return (
         <div>
             <CardDeck style={{ width: 'fit-content', margin: 'auto' }} >
-                <Card>
-                    <Card.Img variant="top" src={props.FoodImage1} />
-                    <Card.Body>
-                        <Card.Title>Tên món</Card.Title>
-                        <Card.Text>
-                            Mô tả món
-                        </Card.Text>
-                        <Button href='#anchor' variant="primary">Đặt chỗ</Button>
-                    </Card.Body>
-                </Card>
-                <Card >
-                    <Card.Img variant="top" src={FoodImage} />
-                    <Card.Body>
-                        <Card.Title>Tên món</Card.Title>
-                        <Card.Text>
-                            Mô tả món
-                        </Card.Text>
-                        <Button href='#anchor' variant="primary">Đặt chỗ</Button>
-                    </Card.Body>
-                </Card>
-                <Card >
-                    <Card.Img variant="top" src={FoodImage} />
-                    <Card.Body>
-                        <Card.Title>Tên món</Card.Title>
-                        <Card.Text>
-                            Mô tả món
-                        </Card.Text>
-                        <Button href='#anchor' variant="primary">Đặt chỗ</Button>
-                    </Card.Body>
-                </Card>
+                <Dish FoodImage={props.FoodImage1} DishName='Haha' DishDescription='Dish Description' />
+                <Dish FoodImage={props.FoodImage1} DishName='Haha' DishDescription='Dish Description' />
+                <Dish FoodImage={props.FoodImage1} DishName='Haha' DishDescription='Dish Description' />
             </CardDeck>
             <br />
             <Pagination>
