@@ -13,8 +13,6 @@ export default function TableSetUp() {
     return (
         <div id='anchor' style={{ width: '50rem' }}>
             <ReservationForm/>
-            <br />
-            <DrawTable/>
         </div>
     );
 }

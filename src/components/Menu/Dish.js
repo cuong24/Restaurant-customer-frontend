@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import FoodImage from '../../images/logo192.png';
-import { CardDeck, Pagination } from "react-bootstrap";
-const getDishesEndPoint = 'http://localhost:8080/students/'
 
 export default function Dish(props) {
 
