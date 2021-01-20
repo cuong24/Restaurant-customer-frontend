@@ -8,7 +8,104 @@
     font-family: sans-serif;
     text-align: center;
     height: 100%;
-    width: 100%;
+}
+
+.navbar-brand{
+    color: #7e1717 !important;
+}
+
+.Menu {
+    background-color: #7e1717;
+}
+
+a {
+    color: white !important;
+}
+
+.nav-link.active {
+    color: #7e1717 !important;
+}
+
+.card-title {
+    color: #7e1717 !important;
+}
+
+p.card-text {
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: justify !important;
+    color: #cc9900  !important;
+}
+
+.btn-primary {
+    outline: none;
+    border: none !important;
+    border-bottom: 2px solid #7e1717 !important;
+    background-color: white !important;
+    color: #7e1717 !important;
+    margin-top: 15px !important;
+}
+
+.reserveButton:hover {
+    color: white !important;
+    background-color: #7e1717 !important;
+}
+
+.btn-primary:enabled:hover {
+    color: white !important;
+    background-color: #7e1717 !important;
+}
+
+*:focus, *:active:focus, *.active:focus, *.focus, *:active.focus, *.active.focus {
+    box-shadow: none !important;
+}
+
+.pagination * {
+    color: #7e1717 !important;
+    padding-bottom: 20px;
+}
+
+ul.pagination {
+    margin: 0 !important;
+}
+
+.reservation, .menu, .tab-content {
+    width: 90%;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.cardDeck {
+    width: fit-content;
+    margin: auto;
+}
+
+#anchor {
+    background-color: #ddd7d1 !important;
+    width: 100% !important;
+    padding-bottom: 60px;
+}
+
+.reservationHeader {
+    font-size: 30px !important;
+}
+
+.react-datepicker__input-container input {
+    width: 190px;
+    padding: 15px 15px 5px;
+    border: none;
+    background-color: #ddd7d1;
+    color: #3c2901;
+    border-bottom: 1px solid #3c2901;
+}
+
+.react-datepicker__input-container {
+    padding-bottom: 30px;
+}
+
+.react-datepicker__input-container input:focus {
+    box-shadow: none;
+    outline: none;
 }
 
 h1{
@@ -110,10 +207,36 @@ h1{
     grid-area: tableOf2_11;
 }
 
+.reservationTables {
+    margin-bottom: 50px;
+}
+
+.unavailable, .available, .booked {
+    border-radius: 4px;
+    padding: 20px;
+}
+
+h1 {
+    color: #866816 !important;
+}
+
 .unavailable{
     opacity: 30%;
 }
 
 .booked{
     box-shadow: rgba(217, 173, 124, 0.4) 5px 5px, rgba(217, 173, 124, 0.3) 10px 10px, rgba(217, 173, 124, 0.2) 15px 15px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+label {
+    color: #3c2901 !important;
+}
+
+.errorLog {
+    color: #a53c3c;
+    font-style: italic;
 }

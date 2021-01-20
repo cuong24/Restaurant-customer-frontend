@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Form from 'react-bootstrap/Form';
 import DateTimePicker from '../../DateTime';
 import '../styles.css';
 import TableGeneral from '../TableType/TableGeneral';
@@ -69,7 +68,7 @@ export default function DrawTable(props) {
 
   useEffect(() => {
     drawTable()
-    loadTable()
+    loadTable(new Date())
   }, []);
 
   const loadTable = (newDate) => {
@@ -77,7 +76,7 @@ export default function DrawTable(props) {
       fetch(`${getAvailableTable}/${newDate.toISOString().substring(0, 10) + " " + newDate.toISOString().substring(11, 16) + ":00"}`)
         .then(response => response.json())
         .then(data => {
-          for (var i = 0; i < data.length; i++) {
+          for (let i = 0; i < data.length; i++) {
               allTables[data[i].id - 1].status = 'available'
           }
         })
@@ -92,25 +91,21 @@ export default function DrawTable(props) {
 
   const drawTable = () => {
     let tables = []
-    for (var i = 0; i <= 13; i++) {
+    for (let i = 0; i <= 13; i++) {
       tables.push(<TableGeneral index={i + 1} status={allTables[i].status} bookTable={props.bookTable} unbookTable={props.unbookTable} />);
     }
     setTables(tables)
   }
 
   return (
-    <div>
-      <Form.Group controlId="formBasicDate">
-        <Form.Label>Date</Form.Label>
-        <DateTimePicker
-          startTime={date}
-          setDate={redrawTable}
-        />
-      </Form.Group>
+    <div className="reservationTables" >
+      <DateTimePicker
+        startTime={date}
+        setDate={redrawTable}
+      />
       <div id="floorPlan" className="mb-4 text-center">
         {tables}
       </div>
     </div>
-
   );
 }

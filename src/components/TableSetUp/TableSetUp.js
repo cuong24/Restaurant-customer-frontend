@@ -4,7 +4,7 @@ import ReservationForm from './Forms/ReservationForm';
 
 export default function TableSetUp() {
     return (
-        <div id='anchor' style={{ width: '50rem' }}>
+        <div id='anchor'>
             <ReservationForm/>
         </div>
     );

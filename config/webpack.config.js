@@ -370,6 +370,7 @@ module.exports = function (webpackEnv) {
               test: [/\.avif$/],
               loader: require.resolve('url-loader'),
               options: {
+                esModule: false,
                 limit: imageInlineSizeLimit,
                 mimetype: 'image/avif',
                 name: 'static/media/[name].[hash:8].[ext]',
@@ -382,6 +383,7 @@ module.exports = function (webpackEnv) {
               test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
               loader: require.resolve('url-loader'),
               options: {
+                esModule: false,
                 limit: imageInlineSizeLimit,
                 name: 'static/media/[name].[hash:8].[ext]',
               },
@@ -536,6 +538,7 @@ module.exports = function (webpackEnv) {
               // by webpacks internal loaders.
               exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
               options: {
+                esModule: false,
                 name: 'static/media/[name].[hash:8].[ext]',
               },
             },

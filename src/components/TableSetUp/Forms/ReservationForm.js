@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -17,6 +17,9 @@ export default function ReservationForm() {
     const [bookTables, setBookTables] = useState([])
     const [disabled, setDisabled] = useState(true)
     const [date, setNewDate] = useState(new Date())
+    const [nameError, setNameError] = useState("")
+    const [phoneError, setPhoneError] = useState("")
+    const [startTimeError, setStartTimeError] = useState("")
 
     const setDate = (newDate) => {
         setNewDate(date => newDate)
@@ -28,40 +31,62 @@ export default function ReservationForm() {
     }
 
     const unbookTable = (tableId) => {
-        // console.log(bookTables)
-        // setBookTables(bookTables.filter(item => item !== tableId))
-        // console.log(bookTables)
-        
         setBookTables((bookTables => {
-            console.log(bookTables)
             let index = bookTables.indexOf(tableId)
             if (index > -1) {
                 bookTables.splice(index, 1)
                 if (bookTables.length === 0) {
                     setDisabled(true)
                 }
-                console.log(bookTables)
-                return bookTables.stringify
+                return bookTables
+            } else {
+                return bookTables
             }
         }))
     }
 
-    const sendForm = () => {
-        console.log(bookTables)
-        // bookTables.forEach(tableId => {
-        //     createReservation(tableId);
-        // })
-        // window.location.reload()
+    const sendForm = async () => {
+        if (validate()) {
+            for (const tableId of bookTables) {
+                const newReservation = convertTimeField(tableId)
+                await fetch(adminEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newReservation)
+                })
+                    .then(res => res.text())
+            }
+            alert("Your tables have been successfully reserved!")
+            window.location.reload()
+        } else {
+            alert("Fail to reserve your tables :< Please try again")
+        }
     }
 
-    const createReservation = (tableId) => {
-        const newReservation = convertTimeField(tableId)
-        fetch(adminEndpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newReservation)
-        })
-            .then(res => res.text())
+    const validate = () => {
+        resetError()
+        const phoneNoRegex = /^\d{10,20}$/
+        const nameRegex = /[A-Za-z]+/
+        let valid = 1
+        if (!phone.match(phoneNoRegex)){
+            setPhoneError("Phone must have 10 - 20 digits")
+            valid = 0
+        }
+        if (!name.match(nameRegex)){
+            setNameError("Name must not be empty.")
+            valid = 0
+        }
+        if (date === null) {
+            setStartTimeError("Start time must have format MM/DD/YYYY, HH:MM AM/PM")
+            valid = 0
+        }
+        return valid
+    }
+
+    const resetError = () => {
+        setNameError("")
+        setPhoneError("")
+        setStartTimeError("")
     }
 
     const convertTimeField = (tableId) => {
@@ -79,22 +104,23 @@ export default function ReservationForm() {
         }
         return newReservation
     }
-    console.log(bookTables);
 
     return (
-        <div>
-            <h1>{bookTables}</h1>
-            <h1>Book a table here!</h1>
+        <div className="reservation">
+            <h1 className="reservationHeader"><em>Book a table here!</em></h1>
+            <div className = { "errorLog" }>{ startTimeError }</div>
             <DrawTable bookTable={bookTable} unbookTable={unbookTable} date={date} setDate={setDate} />
             <Row>
                 <Col><Form.Group controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
+                    <div className = { "errorLog" }>{ nameError }</div>
                     <Form.Control type="text" placeholder="Enter name" onChange={e => setName(e.target.value)} />
                 </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group controlId="formBasicNumber">
                         <Form.Label>Phone Number</Form.Label>
+                        <div className = { "errorLog" }>{ phoneError }</div>
                         <Form.Control type="number" placeholder="Enter phone number" onChange={e => setPhone(e.target.value)} />
                     </Form.Group>
                 </Col>
@@ -102,8 +128,7 @@ export default function ReservationForm() {
             <Form.Group>
                 <Form.Label>Email address</Form.Label>
                 <Row><Col>
-                    <Form.Label htmlFor="inlineFormInput" srOnly>
-                    </Form.Label>
+                    <Form.Label htmlFor="inlineFormInput" srOnly/>
                     <Form.Control
                         className="mb-2"
                         id="inlineFormInput"

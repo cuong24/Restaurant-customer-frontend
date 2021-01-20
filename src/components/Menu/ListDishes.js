@@ -3,8 +3,8 @@ import { CardDeck, Pagination } from "react-bootstrap";
 import Dish from './Dish';
 const getDishesEndPoint = 'http://54.214.208.194:8989/menu'
 
-export default function ListDishs(props) {
-    const {Category, FoodImage1} = props
+export default function ListDishes(props) {
+    const {Category} = props
     const [dishes, setDishes] = useState([]);
     const [pageLimit, setPageLimit] = useState(false);
     const [activePage, setActivePage] = useState(1);
@@ -37,7 +37,7 @@ export default function ListDishs(props) {
 
     const loadDishes = (movePage) => {
         if (movePage === 0) {
-            fetch(`${getDishesEndPoint}/${Category}&maxResults=${elementsPerPage}`).then(response => response.json())
+            fetch(`${getDishesEndPoint}/${Category}?maxResults=${elementsPerPage}`).then(response => response.json())
                 .then(data => {
                     setDishes(data)
                 });
@@ -52,9 +52,9 @@ export default function ListDishs(props) {
 
     return (
         <div>
-            <CardDeck style={{ width: "800px", margin: 'auto' }} >
+            <CardDeck className="cardDeck" >
             { dishes.map(el => (
-                <Dish FoodImage={FoodImage1} DishName={el.name} DishDescription={el.description} />
+                <Dish DishName={el.name} DishDescription={el.description} />
                     )) }
             </CardDeck>
             <br />
