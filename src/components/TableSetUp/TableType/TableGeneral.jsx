@@ -4,23 +4,23 @@ import TableOf4 from "./TableOf4";
 import TableOf6 from "./TableOf6";
 
 function TableGeneral(props) {
-
-    if(props.index <=3){
+    const {index, status, bookTable, unbookTable} = props
+    if(index <=3){
         return (
-            <TableOf4 tableNum={props.index} status={props.status} bookTable={props.bookTable} unbookTable ={props.unbookTable}/>
+            <TableOf4 tableNum={index} status={status} bookTable={bookTable} unbookTable ={unbookTable}/>
           );
     } 
-    if (props.index <= 5 && props.index >= 4){
+    if (index <= 5 && index >= 4){
         return ( 
-            <TableOf6 tableNum={props.index} status={props.status} bookTable={props.bookTable} unbookTable ={props.unbookTable}/>
+            <TableOf6 tableNum={index} status={status} bookTable={bookTable} unbookTable ={unbookTable}/>
           );
     }
-    if (props.index >= 6 && props.index <= 11){
+    if (index >= 6 && index <= 11){
         return ( 
-            <TableOf2 tableNum={props.index - 5} status={props.status} bookTable={props.bookTable} unbookTable ={props.unbookTable}/>
+            <TableOf2 tableNum={index} status={status} bookTable={bookTable} unbookTable ={unbookTable}/>
           );
     }
-    return (<TableOf4 tableNum={props.index - 8} status={props.status} bookTable={props.bookTable} unbookTable ={props.unbookTable}/>);
+    return (<TableOf4 tableNum={index} status={status} bookTable={bookTable} unbookTable ={unbookTable}/>);
 }
 
 export default TableGeneral;

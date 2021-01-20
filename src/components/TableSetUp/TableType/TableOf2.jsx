@@ -1,24 +1,25 @@
 import React, {useState} from "react";
 
 function TableOf2(props) {
+  const {bookTable, unbookTable, status, tableNum} = props
   const [tableStatus, setTableStatus] = useState('available');
 
-  const bookTable = () => {
+  const handleClick = () => {
     if(props.status !== 'unavailable'){
       if (tableStatus === 'booked'){
         setTableStatus('available')
-        props.unbookTable(props.tableNum + 5);
+        unbookTable(tableNum);
       }      
       if (tableStatus === 'available'){
         setTableStatus('booked')   
-        props.bookTable(props.tableNum + 5);
+        bookTable(tableNum);
       }
     }
   }
 
   return (
-    <div id={`tableOf2_${props.tableNum}`} className = {props.status === 'unavailable' ? props.status : tableStatus} onClick={() => bookTable()}>
-      <h1> Table of 2 No.{props.tableNum} </h1>
+    <div id={`tableOf2_${tableNum}`} className = {status === 'unavailable' ? status : tableStatus} onClick={() => handleClick()}>
+      <h1> Table of 2 No.{tableNum} </h1>
     </div>
   );
 }

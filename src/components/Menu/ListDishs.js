@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import FoodImage from '../../images/logo192.png';
 import { CardDeck, Pagination } from "react-bootstrap";
 import Dish from './Dish';
-const getDishesEndPoint = 'http://localhost:8989/menu/'
+const getDishesEndPoint = 'http://54.214.208.194:8989/menu'
 
 export default function ListDishs(props) {
+    const {Category, FoodImage1} = props
     const [dishes, setDishes] = useState([]);
     const [pageLimit, setPageLimit] = useState(false);
     const [activePage, setActivePage] = useState(1);
@@ -37,15 +35,14 @@ export default function ListDishs(props) {
         loadDishes(0);
     }
 
-    const loadDishes = (x) => {
-        if (x === 0) {
-            let endpoint = getDishesEndPoint + props.Category + '?startAt=' + 0 + '&maxResults=' + elementsPerPage;
-            fetch( endpoint).then(response => response.json())
+    const loadDishes = (movePage) => {
+        if (movePage === 0) {
+            fetch(`${getDishesEndPoint}/${Category}&maxResults=${elementsPerPage}`).then(response => response.json())
                 .then(data => {
                     setDishes(data)
                 });
         } else {
-            fetch(getDishesEndPoint + props.Category + '?startAt=' + (activePage - 1 + x) * 3 + '&maxResults=' + elementsPerPage)
+            fetch(`${getDishesEndPoint}/${Category}?startAt=${(activePage - 1 + movePage)* 3}&maxResults=${elementsPerPage}`)
                 .then(response => response.json())
                 .then(data => {
                     setDishes(data)
@@ -55,9 +52,9 @@ export default function ListDishs(props) {
 
     return (
         <div>
-            <CardDeck style={{ width: 'fit-content', margin: 'auto' }} >
+            <CardDeck style={{ width: "800px", margin: 'auto' }} >
             { dishes.map(el => (
-                <Dish FoodImage={props.FoodImage1} DishName={el.name} DishDescription={el.description}  />
+                <Dish FoodImage={FoodImage1} DishName={el.name} DishDescription={el.description} />
                     )) }
             </CardDeck>
             <br />
@@ -66,7 +63,6 @@ export default function ListDishs(props) {
                 <Pagination.Prev disabled={pageLimit} onClick={() => previousPage()} />
                 <Pagination.Item >{activePage}</Pagination.Item>
                 <Pagination.Next onClick={() => nextPage()} />
-                {/* <Pagination.Last /> */}
             </Pagination>
         </div>
 

@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 export default function Dish(props) {
-
-
+    const {FoodImage, DishName, DishDescription} = props
     return (
         <Card>
-            <Card.Img variant="top" src={props.FoodImage} />
+            <Card.Img variant="top" src={FoodImage} />
             <Card.Body>
-                <Card.Title>{props.DishName}</Card.Title>
+                <Card.Title>{DishName}</Card.Title>
                 <Card.Text>
-                    {props.DishDescription}
+                    {DishDescription}
                         </Card.Text>
                 <Button href='#anchor' variant="primary">Đặt chỗ</Button>
             </Card.Body>
