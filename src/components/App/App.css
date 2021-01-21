@@ -214,6 +214,7 @@ h1{
 .unavailable, .available, .booked {
     border-radius: 4px;
     padding: 20px;
+    cursor: pointer;
 }
 
 h1 {
