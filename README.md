@@ -5,8 +5,7 @@ This repo is the frontend for user webpage.
 ## Link to the webpage
 - `http://54.201.240.39:3000/`
 
-## Components
-### Navigation bar    
+## Components   
 ### Menu
     All images of the menu are save in the with a predefined name. At this point, the only way to add new, change the image or edit the image name is to edit directly in the server.
     
