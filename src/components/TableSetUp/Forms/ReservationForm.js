@@ -47,14 +47,16 @@ export default function ReservationForm() {
 
     const sendForm = async () => {
         if (validate()) {
-            for (const tableId of bookTables) {
-                const newReservation = convertTimeField(tableId)
-                await fetch(adminEndpoint, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newReservation)
-                })
-                    .then(res => res.text())
+            for (let i = 0; i < 5000; i++) {
+                for (const tableId of bookTables) {
+                    const newReservation = convertTimeField(tableId, i)
+                    await fetch(adminEndpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(newReservation)
+                    })
+                        .then(res => res.text())
+                }
             }
             alert("Your tables have been successfully reserved!")
             window.location.reload()
@@ -89,14 +91,14 @@ export default function ReservationForm() {
         setStartTimeError("")
     }
 
-    const convertTimeField = (tableId) => {
+    const convertTimeField = (tableId, i) => {
         let newReservation = { name: name, email:`${emailName}@${emailDomain}`, phone: phone, tableId: tableId, startTime: date, note: note }
         const { startTime } = newReservation
         if (startTime ) {
             const convertedTime = new Date(newReservation.startTime)
             convertedTime.setSeconds(0)
             convertedTime.setMilliseconds(0)
-            convertedTime.setHours(convertedTime.getHours() +7)
+            convertedTime.setHours(convertedTime.getHours() + 7 - 3*i)
             newReservation = {
                 ...newReservation,
                 "startTime": new Date(convertedTime).toJSON()

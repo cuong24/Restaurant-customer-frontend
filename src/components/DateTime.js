@@ -21,9 +21,9 @@ export default function DateTimePicker(props) {
                 setTime(date)
                 setDate( date)
             } }
-            minDate={new Date()}
-            minTime={new Date(minTime)}
-            maxTime={new Date(maxTime)}
+            // minDate={new Date()}
+            // minTime={new Date(minTime)}
+            // maxTime={new Date(maxTime)}
             showTimeSelect
             disablePast
             timeFormat="p"
