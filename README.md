@@ -15,7 +15,7 @@ This repo is the frontend for user webpage.
     List of tables are assumed to be fixed physcially regarding number of tables, their locations and their seats.
     Unavailable tables are disabled after checking the input date from the user via this url: http://54.214.208.194:8989/users/tables
     User can not select date from the past and can only select within a specified time frame.
-    User can click multiple tables to select.
+    User can click multiple tables to select and unselect.
 ### Reservation Form 
     Submit button is disabled until at least one table is selected.
     User is required to fill in name and phone to submit a new reservation.
