@@ -25,6 +25,7 @@ Submit button is disabled until at least one table is selected.
 
 User is required to fill in name and phone to submit a new reservation.
     
-## Deploy
- * Services can be launched with a single docker-compose up --build command.
+### How to launch the service
+1. Run npm install
+2. Run docker-compose up --build command 
  * IP for all URL calls, including URL to set webpage after deployed has to be checked and modified manually to make sure it is up-to-date.
