@@ -1,9 +1,10 @@
 # Software Architecture
 This project is to develop a Restaurant website applying modern, scalable, high available architecture by implementing OAuth2, micro-service, Redis, Kafka message queue, Docker, Kubernetes and AWS cloud.
 This repo is the frontend for user webpage.
+ * The IPs for all the URLs might change in the future since we reboot the EC2 instances.
 
 ## Link to the webpage
-http://54.201.240.39:3000/
+http://34.219.211.13:3000/
 
 ## Components   
 ### Menu
@@ -28,4 +29,5 @@ User is required to fill in name and phone to submit a new reservation.
 ### How to launch the service
 1. Run npm install
 2. Run docker-compose up --build command 
+ * The service is using Nginx as web server and deployed in production mode.
  * IP for all URL calls, including URL to set webpage after deployed has to be checked and modified manually to make sure it is up-to-date.
