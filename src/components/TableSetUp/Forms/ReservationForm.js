@@ -18,6 +18,7 @@ export default function ReservationForm() {
     const [disabled, setDisabled] = useState(true)
     const [date, setNewDate] = useState(new Date())
     const [nameError, setNameError] = useState("")
+    const [tableError, setTableError] = useState("No table selected")
     const [phoneError, setPhoneError] = useState("")
     const [startTimeError, setStartTimeError] = useState("")
 
@@ -26,6 +27,7 @@ export default function ReservationForm() {
     }
 
     const bookTable = (tableId) => {
+        setTableError("")
         setDisabled(false)
         setBookTables((bookTables => ([...bookTables, tableId])))
     }
@@ -36,6 +38,7 @@ export default function ReservationForm() {
             if (index > -1) {
                 bookTables.splice(index, 1)
                 if (bookTables.length === 0) {
+                    setTableError("No table selected")
                     setDisabled(true)
                 }
                 return bookTables
@@ -107,7 +110,7 @@ export default function ReservationForm() {
 
     return (
         <div className="reservation">
-            <h1 className="reservationHeader"><em>Book a table here!</em></h1>
+            <h1 className="reservationHeader"><em>Book a table here! Click click!!</em></h1>
             <div className = { "errorLog" }>{ startTimeError }</div>
             <DrawTable bookTable={bookTable} unbookTable={unbookTable} date={date} setDate={setDate} />
             <Row>
@@ -152,6 +155,7 @@ export default function ReservationForm() {
             <Button type="button" size="lg" disabled={disabled} onClick={()=>sendForm()}>
                 Submit
             </Button>
+            <div className = { "errorLog" }>{tableError}</div>
         </div>
     );
 }

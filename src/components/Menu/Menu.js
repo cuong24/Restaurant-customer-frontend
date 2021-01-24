@@ -6,14 +6,14 @@ import ListDishes from './ListDishes';
 export default function Menu() {
 
     return (
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="menu">
-            <Tab eventKey="home" title="Main">
+        <Tabs defaultActiveKey="main" id="uncontrolled-tab-example" className="menu">
+            <Tab eventKey="main" title="Main">
                 <ListDishes Category='main'/>
             </Tab>
-            <Tab eventKey="profile" title="Appetizer">
+            <Tab eventKey="appetizer" title="Appetizer">
                 <ListDishes Category='appetizer'/>
             </Tab>
-            <Tab eventKey="contact" title="Dessert">
+            <Tab eventKey="dessert" title="Dessert">
                 <ListDishes Category='dessert' />
             </Tab>
         </Tabs>

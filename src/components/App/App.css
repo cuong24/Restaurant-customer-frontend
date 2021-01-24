@@ -214,6 +214,7 @@ h1{
 .unavailable, .available, .booked {
     border-radius: 4px;
     padding: 20px;
+    cursor: pointer;
 }
 
 h1 {
@@ -225,7 +226,7 @@ h1 {
 }
 
 .booked{
-    box-shadow: rgba(217, 173, 124, 0.4) 5px 5px, rgba(217, 173, 124, 0.3) 10px 10px, rgba(217, 173, 124, 0.2) 15px 15px;
+    box-shadow: rgba(126, 23, 23, 0.8) 5px 5px, rgba(126, 23, 23, 0.5) 10px 10px, rgba(126, 23, 23, 0.3) 15px 15px;
 }
 
 .form-group {
