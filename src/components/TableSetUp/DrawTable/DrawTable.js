@@ -76,8 +76,12 @@ export default function DrawTable(props) {
       fetch(`${getAvailableTable}/${newDate.toISOString().substring(0, 10) + " " + newDate.toISOString().substring(11, 16) + ":00"}`)
         .then(response => response.json())
         .then(data => {
-          for (let i = 0; i < data.length; i++) {
+          if (data.length === 0) {
+            alert("No available tables found at the selected time")
+          } else {
+            for (let i = 0; i < data.length; i++) {
               allTables[data[i].id - 1].status = 'available'
+            }
           }
         })
         .then(() => drawTable());
